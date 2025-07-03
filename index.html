@@ -8,119 +8,178 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" />
     <script src="https://cdn.tailwindcss.com"></script>
 <style>
+  :root {
+    --primary-glow: #58a6ff;
+    --bg-dark: #0d1117;
+    --bg-gradient: linear-gradient(to right, #00c6ff, #0072ff);
+    --glass: rgba(255, 255, 255, 0.05);
+    --neon: 0 0 8px var(--primary-glow), 0 0 12px var(--primary-glow);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+  }
+
   body {
     font-family: 'Space Grotesk', sans-serif;
-    scroll-behavior: smooth;
-    background-color: #0d1117;
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at top left, #12181f, #0d1117);
+    color: white;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Hero gradient pulse like CRED header */
+  /* Custom cursor */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-glow);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.15s ease;
+  }
+
+  /* Text reveal animation */
   .hero-text {
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    background: var(--bg-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientShift 6s ease infinite;
+    animation: scrollReveal 6s ease-in-out infinite;
+    opacity: 0.7;
   }
 
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  @keyframes scrollReveal {
+    0%, 100% { opacity: 0.3; filter: blur(4px); }
+    30%, 70% { opacity: 1; filter: blur(0); }
   }
 
-  /* Smooth card hover + glass effect */
+  /* Frosted card effect */
   .frost-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    transform: perspective(1000px);
   }
 
   .frost-card:hover {
-    background: rgba(255, 255, 255, 0.07);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-    transform: translateY(-6px);
+    transform: translateY(-10px) rotateX(2deg);
+    box-shadow: var(--neon);
   }
 
-  /* Button scaling + glow */
-  button,
-  a.bg-[#238636] {
-    transition: all 0.3s ease;
+  /* Button with sweep trail */
+  button, a.bg-[#238636] {
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
   }
 
-  button::after,
-  a.bg-[#238636]::after {
-    content: '';
+  button::before,
+  a.bg-[#238636]::before {
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
-    height: 100%;
     width: 100%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.1);
-    transform: skewX(-20deg);
-    transition: all 0.6s ease;
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
   }
 
-  button:hover::after,
-  a.bg-[#238636]:hover::after {
+  button:hover::before,
+  a.bg-[#238636]:hover::before {
     left: 100%;
   }
 
   button:hover,
   a.bg-[#238636]:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(88, 166, 255, 0.2);
+    transform: scale(1.06);
+    box-shadow: 0 0 20px var(--primary-glow);
   }
 
-  /* Footer icons glow */
+  /* Scroll reveal parallax */
+  [data-parallax] {
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 1s ease-out;
+  }
+  [data-parallax].visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Hovered section titles */
+  h2:hover {
+    color: var(--primary-glow);
+    text-shadow: var(--neon);
+    transform: scale(1.02);
+    transition: all 0.3s;
+  }
+
+  /* Image zoom effect */
+  img:hover {
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+  }
+
+  /* Icon interactions */
   footer svg {
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
   footer a:hover svg {
     transform: scale(1.2);
-    fill: #58a6ff;
-    filter: drop-shadow(0 0 8px #58a6ff);
+    fill: var(--primary-glow);
+    filter: drop-shadow(var(--neon));
   }
 
-  /* Section titles floating effect */
-  h2:hover {
-    transform: translateY(-2px);
-    color: #58a6ff;
-    transition: all 0.3s ease;
-  }
-
-  /* Image hover zoom */
-  img {
-    transition: transform 0.4s ease;
-  }
-
-  img:hover {
-    transform: scale(1.05);
-  }
-
-  /* Light glass border highlight */
+  /* Custom highlight */
   .highlight-glow {
+    box-shadow: var(--neon);
     border: 1px solid rgba(88, 166, 255, 0.2);
-    box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
   }
 
-  ::selection {
-    background: #58a6ff;
-    color: #0d1117;
+  /* Stardust particle overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Scrollbar custom */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-glow);
+    border-radius: 4px;
+  }
+
+  section {
+    position: relative;
+    z-index: 2;
   }
 </style>
 
