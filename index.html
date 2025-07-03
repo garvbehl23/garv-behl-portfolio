@@ -8,85 +8,122 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    body {
-        font-family: 'Space Grotesk', sans-serif;
-        scroll-behavior: smooth;
-    }
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #0d1117;
+    overflow-x: hidden;
+  }
 
-    .hero-text {
-        background: linear-gradient(90deg, #00c6ff, #0072ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: pulseColor 4s ease infinite;
-    }
+  /* Hero gradient pulse like CRED header */
+  .hero-text {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease infinite;
+  }
 
-    @keyframes pulseColor {
-        0%, 100% {
-            filter: brightness(1.1);
-        }
-        50% {
-            filter: brightness(1.7);
-        }
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
     }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
-    .skill-card,
-    .bg-[#1b2127] {
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
-    }
+  /* Smooth card hover + glass effect */
+  .frost-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
 
-    .skill-card:hover,
-    .bg-[#1b2127]:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        background-color: #232a33;
-    }
+  .frost-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px);
+  }
 
-    a {
-        transition: color 0.3s ease;
-    }
+  /* Button scaling + glow */
+  button,
+  a.bg-[#238636] {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
 
-    a:hover {
-        color: #58a6ff;
-    }
+  button::after,
+  a.bg-[#238636]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(-20deg);
+    transition: all 0.6s ease;
+  }
 
-    button {
-        transition: all 0.3s ease;
-    }
+  button:hover::after,
+  a.bg-[#238636]:hover::after {
+    left: 100%;
+  }
 
-    button:hover {
-        background-color: #2f3d4d;
-        transform: scale(1.05);
-    }
+  button:hover,
+  a.bg-[#238636]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(88, 166, 255, 0.2);
+  }
 
-    footer svg {
-        transition: transform 0.3s ease, fill 0.3s;
-    }
+  /* Footer icons glow */
+  footer svg {
+    transition: all 0.3s ease;
+  }
 
-    footer a:hover svg {
-        transform: scale(1.2);
-        fill: #58a6ff;
-    }
+  footer a:hover svg {
+    transform: scale(1.2);
+    fill: #58a6ff;
+    filter: drop-shadow(0 0 8px #58a6ff);
+  }
 
-    img {
-        transition: transform 0.3s ease;
-    }
+  /* Section titles floating effect */
+  h2:hover {
+    transform: translateY(-2px);
+    color: #58a6ff;
+    transition: all 0.3s ease;
+  }
 
-    img:hover {
-        transform: scale(1.03);
-    }
+  /* Image hover zoom */
+  img {
+    transition: transform 0.4s ease;
+  }
 
-    ::selection {
-        background-color: #58a6ff;
-        color: #0d1117;
-    }
+  img:hover {
+    transform: scale(1.05);
+  }
 
-    .text-white:hover,
-    h2:hover,
-    h3:hover {
-        color: #58a6ff;
-        transition: color 0.3s ease;
-    }
+  /* Light glass border highlight */
+  .highlight-glow {
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+  }
+
+  ::selection {
+    background: #58a6ff;
+    color: #0d1117;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 </style>
+
 
 </head>
 
@@ -336,7 +373,7 @@
                         </div>
                     </a>
                 </div>
-                <p class="text-[#9cabba] text-base font-normal leading-normal">© 2024 Garv Behl. All rights reserved.</p>
+                <p class="text-[#9cabba] text-base font-normal leading-normal">© 2025 Garv Behl. All rights reserved.</p>
             </footer>
         </div>
         </div>
