@@ -8,191 +8,122 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" />
     <script src="https://cdn.tailwindcss.com"></script>
 <style>
-/* ========== General ========== */
-body {
+  body {
     font-family: 'Space Grotesk', sans-serif;
-    background: radial-gradient(ellipse at top left, #0d1117, #080b10 60%);
-    color: white;
-    overflow-x: hidden;
     scroll-behavior: smooth;
-}
+    background-color: #0d1117;
+    overflow-x: hidden;
+  }
 
-h2, h3 {
-    letter-spacing: -0.02em;
-    position: relative;
-}
-
-section {
-    position: relative;
-    z-index: 1;
-}
-
-::selection {
-    background: #58a6ff;
-    color: black;
-}
-
-/* ========== Glass Effect Cards ========== */
-.bg-glass {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* ========== Neon Glowing Headings ========== */
-h2::before {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 40px;
-    height: 3px;
+  /* Hero gradient pulse like CRED header */
+  .hero-text {
     background: linear-gradient(90deg, #00c6ff, #0072ff);
-    border-radius: 4px;
-    animation: pulseLine 2s ease-in-out infinite;
-}
-
-@keyframes pulseLine {
-    0%, 100% {
-        width: 40px;
-        opacity: 0.6;
-    }
-    50% {
-        width: 60px;
-        opacity: 1;
-    }
-}
-
-/* ========== Animated Gradient Text ========== */
-.hero-text {
-    background: linear-gradient(270deg, #ff00c3, #0072ff, #00ffae);
-    background-size: 600% 600%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientFlow 6s ease infinite;
-}
+    animation: gradientShift 6s ease infinite;
+  }
 
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* ========== Blurred to Clear Text on Scroll ========== */
-.reveal {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(40px);
-    transition: all 0.9s ease-out;
-}
-
-.reveal.active {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0px);
-}
-
-/* ========== Card Animation ========== */
-.skill-card, .project-card, .achievement-card {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    transform-style: preserve-3d;
-    will-change: transform;
-}
-
-.skill-card:hover, .project-card:hover, .achievement-card:hover {
-    transform: translateY(-10px) rotateX(3deg);
-    box-shadow: 0 25px 45px rgba(0, 255, 255, 0.2);
-}
-
-/* ========== Button Glow & Sparkle ========== */
-button {
-    position: relative;
-    overflow: hidden;
-}
-
-button::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 20%, transparent 60%);
-    animation: sparkle 3s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes sparkle {
+  @keyframes gradientShift {
     0% {
-        transform: translate(0, 0) rotate(0deg);
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
     }
     100% {
-        transform: translate(50%, 50%) rotate(360deg);
+      background-position: 0% 50%;
     }
-}
+  }
 
-/* ========== Profile Glow ========== */
-img.profile-img {
-    box-shadow: 0 0 15px rgba(0, 183, 255, 0.5);
+  /* Smooth card hover + glass effect */
+  .frost-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .frost-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px);
+  }
+
+  /* Button scaling + glow */
+  button,
+  a.bg-[#238636] {
     transition: all 0.3s ease;
-}
-img.profile-img:hover {
-    box-shadow: 0 0 30px rgba(0, 183, 255, 0.9);
-    transform: scale(1.05);
-}
+    position: relative;
+    overflow: hidden;
+  }
 
-/* ========== Scrollbar Styling ========== */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #0d1117;
-}
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(#0072ff, #00c6ff);
-    border-radius: 8px;
-}
-
-/* ========== Hero Section Effect ========== */
-.hero-section::before {
+  button::after,
+  a.bg-[#238636]::after {
     content: '';
     position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, #0072ff22, transparent 70%);
-    filter: blur(100px);
-    z-index: 0;
-}
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(-20deg);
+    transition: all 0.6s ease;
+  }
 
-/* ========== Fade-In Reveal on Scroll (JS Required) ========== */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1.5s forwards;
-    animation-delay: var(--delay, 0s);
-}
+  button:hover::after,
+  a.bg-[#238636]:hover::after {
+    left: 100%;
+  }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+  button:hover,
+  a.bg-[#238636]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(88, 166, 255, 0.2);
+  }
 
-/* ========== Responsive ========== */
-@media (max-width: 768px) {
-    h2 {
-        font-size: 1.5rem;
-    }
-    .hero-text {
-        font-size: 2rem;
-    }
-}
+  /* Footer icons glow */
+  footer svg {
+    transition: all 0.3s ease;
+  }
+
+  footer a:hover svg {
+    transform: scale(1.2);
+    fill: #58a6ff;
+    filter: drop-shadow(0 0 8px #58a6ff);
+  }
+
+  /* Section titles floating effect */
+  h2:hover {
+    transform: translateY(-2px);
+    color: #58a6ff;
+    transition: all 0.3s ease;
+  }
+
+  /* Image hover zoom */
+  img {
+    transition: transform 0.4s ease;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Light glass border highlight */
+  .highlight-glow {
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+  }
+
+  ::selection {
+    background: #58a6ff;
+    color: #0d1117;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 </style>
+
 </head>
     <body class="bg-[#0d1117] text-white">
     <header class="sticky top-0 bg-[#0d1117] border-b border-[#21262d] px-8 py-4 flex justify-between items-center z-50">
