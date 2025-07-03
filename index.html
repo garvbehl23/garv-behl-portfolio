@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garv Behl – AI/ML Engineer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .hero-text {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulseColor 4s ease infinite;
+        }
+        
+        @keyframes pulseColor {
+            0%,
+            100% {
+                filter: brightness(1.1);
+            }
+            50% {
+                filter: brightness(1.7);
+            }
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-icon {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0d1117] text-white">
+    <header class="sticky top-0 bg-[#0d1117] border-b border-[#21262d] px-8 py-4 flex justify-between items-center z-50">
+        <h1 class="text-2xl font-bold text-[#58a6ff]">Garv Behl</h1>
+        <nav class="space-x-4 text-sm">
+            <a href="#education" class="hover:text-[#58a6ff]">Education</a>
+            <a href="#skills" class="hover:text-[#58a6ff]">Skills</a>
+            <a href="#experiences" class="hover:text-[#58a6ff]">Experiences</a>
+            <a href="#projects" class="hover:text-[#58a6ff]">Projects</a>
+            <a href="#achievements" class="hover:text-[#58a6ff]">Achievements</a>
+            <a href="#contact" class="hover:text-[#58a6ff]">Contact</a>
+            <a href="/Garv_Behl_Resume.pdf" download class="bg-[#238636] text-white px-4 py-1.5 rounded hover:bg-[#2ea043]">Download Resume</a>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-b from-[#161b22] to-[#0d1117] px-4">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-5xl mx-auto">
+            <img src="profile.png" alt="Garv Behl" class="w-40 h-40 object-cover border-4 border-[#58a6ff] shadow-md rounded-lg" />
+            <div class="text-center md:text-left">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-white">Hi, I'm Garv Behl</h2>
+                <p class="text-[#8b949e] max-w-2xl text-lg">
+                    An AI/ML Engineer and Full-Stack Developer with a passion for building impactful products powered by machine learning, intelligent automation, and robust web tech.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-10 bg-[#0d1117]">
+        <h2 class="text-white text-[22px] font-bold tracking-[-0.015em] px-4 pb-3 pt-10">Education</h2>
+        <div class="grid md:grid-cols-2 gap-6 px-6">
+            <div class="bg-[#1b2127] p-5 rounded-xl">
+                <h3 class="text-white text-lg font-semibold">Amity University, Noida</h3>
+                <p class="text-[#9cabba] text-sm mb-2">B.Tech in Computer Science and Engineering (2022 – 2026)</p>
+                <p class="text-sm text-[#cdd9e5]">• CGPA: 8.38</p>
+            </div>
+            <div class="bg-[#1b2127] p-5 rounded-xl">
+                <h3 class="text-white text-lg font-semibold">Vidya Mandir Public School, Faridabad</h3>
+                <p class="text-[#9cabba] text-sm mb-2">CBSE Board (2019 – 2022)</p>
+                <p class="text-sm text-[#cdd9e5]">• Class XII (2021–22): 94.6%</p>
+                <p class="text-sm text-[#cdd9e5]">• Class X (2019–20): 95.2%</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-10 bg-[#0d1117]">
+        <h2 class="text-3xl font-bold text-center mb-10">🛠 Skills & Tech Stack</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="bg-[#1f2937] p-5 rounded-lg transition-all skill-card">
+                <h3 class="text-xl font-semibold text-blue-400 mb-2">AI/ML Frameworks</h3>
+                <ul class="text-[#c9d1d9] text-sm space-y-1">
+                    <li>TensorFlow, PyTorch</li>
+                    <li>Scikit-learn, XGBoost</li>
+                    <li>Keras, OpenCV</li>
+                </ul>
+            </div>
+            <div class="bg-[#1f2937] p-5 rounded-lg transition-all skill-card">
+                <h3 class="text-xl font-semibold text-blue-400 mb-2">NLP & Speech Tech</h3>
+                <ul class="text-[#c9d1d9] text-sm space-y-1">
+                    <li>Transformers, NLTK, spaCy</li>
+                    <li>Speech Recognition, TTS</li>
+                </ul>
+            </div>
+            <div class="bg-[#1f2937] p-5 rounded-lg transition-all skill-card">
+                <h3 class="text-xl font-semibold text-blue-400 mb-2">Web Development</h3>
+                <ul class="text-[#c9d1d9] text-sm space-y-1">
+                    <li>React.js, Next.js</li>
+                    <li>Node.js, Express.js</li>
+                    <li>Tailwind CSS, Framer Motion</li>
+                </ul>
+            </div>
+            <div class="bg-[#1f2937] p-5 rounded-lg transition-all skill-card">
+                <h3 class="text-xl font-semibold text-blue-400 mb-2">Data & Backend</h3>
+                <ul class="text-[#c9d1d9] text-sm space-y-1">
+                    <li>MongoDB, Firebase, MySQL</li>
+                    <li>REST APIs, GraphQL</li>
+                </ul>
+            </div>
+            <div class="bg-[#1f2937] p-5 rounded-lg transition-all skill-card">
+                <h3 class="text-xl font-semibold text-blue-400 mb-2">Tools & Deployment</h3>
+                <ul class="text-[#c9d1d9] text-sm space-y-1">
+                    <li>Git, GitHub, Postman</li>
+                    <li>Vercel, Netlify, Streamlit</li>
+                </ul>
+            </div>
+            <div class="bg-[#1f2937] p-5 rounded-lg transition-all skill-card">
+                <h3 class="text-xl font-semibold text-blue-400 mb-2">DevOps & Cloud</h3>
+                <ul class="text-[#c9d1d9] text-sm space-y-1">
+                    <li>GCP (basic), Docker</li>
+                    <li>VS Code, Jupyter</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experiences" class="py-20 px-10 bg-[#0d1117]">
+        <h2 class="text-white text-[22px] font-bold tracking-[-0.015em] px-4 pb-3 pt-10">Experiences</h2>
+        <div class="grid md:grid-cols-2 gap-6 px-6">
+            <div class="bg-[#1b2127] p-5 rounded-xl">
+                <h3 class="text-white text-lg font-semibold">AI Automation Intern – Marksman Technologies Pvt. Ltd.</h3>
+                <p class="text-[#9cabba] text-sm mb-2">May 2025 – July 2025 (Remote)</p>
+                <ul class="text-sm text-[#cdd9e5] list-disc list-inside">
+                    <li>Built AI chatbot for hotel bookings using NLP, reducing resolution time by 30%.</li>
+                    <li>Engineered deep learning-based TTS system for YouTube, generating 1500+ hrs/month.</li>
+                    <li>Tools: Python, TensorFlow, gTTS, Transformers, Streamlit, Flask</li>
+                </ul>
+            </div>
+            <div class="bg-[#1b2127] p-5 rounded-xl">
+                <h3 class="text-white text-lg font-semibold">AI/ML Intern – Nebula Accelerator</h3>
+                <p class="text-[#9cabba] text-sm mb-2">July 2025 – Aug 2025, Delhi</p>
+                <ul class="text-sm text-[#cdd9e5] list-disc list-inside">
+                    <li>Preprocessed 0.5TB+ of defense datasets for AI pipelines, boosting accuracy by 85%.</li>
+                    <li>Developed DL-based target detection model with 92% testing accuracy.</li>
+                    <li>Identified 12+ mission-critical data issues via anomaly detection & EDA.</li>
+                    <li>Tools: PyTorch, OpenCV, NumPy, Pandas, Scikit-learn</li>
+                </ul>
+            </div>
+    </section>
+    <section id="projects" class="py-20 px-10 bg-[#0d1117]">
+        <h2 class="text-white text-[22px] font-bold tracking-[-0.015em] px-4 pb-3 pt-10">Project Highlights</h2>
+        <div class="p-4 grid md:grid-cols-2 gap-6">
+            <!-- Project 1: Fake Currency Detector -->
+            <div class="bg-[#1b2127] p-5 rounded-xl shadow-md hover:shadow-lg transition-all">
+                <h3 class="text-white text-xl font-semibold mb-2">Fake Currency Detector</h3>
+                <p class="text-[#9cabba] text-sm mb-3">
+                    AI-based CV system for detecting counterfeit Indian currency notes using image processing.
+                </p>
+                <ul class="text-sm text-[#cdd9e5] list-disc list-inside mb-3">
+                    <li>Achieved 94.5% detection accuracy on 3000+ image dataset</li>
+                    <li>Integrated with webcam for real-time detection</li>
+                </ul>
+                <div class="flex gap-4">
+                    <a href="https://github.com/garvbehl23/fake_indian_currency_detection" target="_blank" class="text-[#58a6ff] font-medium hover:underline">GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Project 2: AushdocAI -->
+            <div class="bg-[#1b2127] p-5 rounded-xl shadow-md hover:shadow-lg transition-all">
+                <h3 class="text-white text-xl font-semibold mb-2">AushdocAI – Emergency Medical Assistant</h3>
+                <p class="text-[#9cabba] text-sm mb-3">
+                    AI-powered assistant providing real-time voice/text CPR guidance and emergency alerts.
+                </p>
+                <ul class="text-sm text-[#cdd9e5] list-disc list-inside mb-3">
+                    <li>Deployed using React, Firebase, Flask & Streamlit</li>
+                    <li>Features real-time hospital locator, profile access & email notifier</li>
+                </ul>
+                <div class="flex gap-4">
+                    <a href="https://github.com/garvbehl23/aushdocai" target="_blank" class="text-[#58a6ff] font-medium hover:underline">GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Project 3: PulsePlay -->
+            <div class="bg-[#1b2127] p-5 rounded-xl shadow-md hover:shadow-lg transition-all">
+                <h3 class="text-white text-xl font-semibold mb-2">PulsePlay</h3>
+                <p class="text-[#9cabba] text-sm mb-3">
+                    Music streaming web app delivering personalized recommendations with ML.
+                </p>
+                <ul class="text-sm text-[#cdd9e5] list-disc list-inside mb-3">
+                    <li>Boosted user engagement by 31% with real-time recommendations</li>
+                    <li>Handled 1K+ concurrent users and 10K+ tracks</li>
+                </ul>
+                <div class="flex gap-4">
+                    <a href="https://github.com/garvbehl23/web" target="_blank" class="text-[#58a6ff] font-medium hover:underline">GitHub Repo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 px-10 bg-[#0d1117]">
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">Achievements</h2>
+        <div class="grid md:grid-cols-3 gap-6 px-6">
+            <div class="bg-[#1b2127] p-4 rounded-xl transition-transform transform hover:scale-105">
+                <img src="gfg1.png" alt="GFG Hackfest Finalist" class="w-full h-40 object-contain rounded mb-3">
+                <p class="text-white text-lg font-semibold mb-1">GFG Hackfest Finalist</p>
+                <p class="text-[#9cabba] text-sm">Built HackHeart: a DIY ECG system using deep learning for arrhythmia detection.</p>
+            </div>
+
+            <div class="bg-[#1b2127] p-4 rounded-xl transition-transform transform hover:scale-105">
+                <img src="singapore.png" alt="Study Abroad Scholar" class="w-full h-40 object-contain rounded mb-3">
+                <p class="text-white text-lg font-semibold mb-1">Study Abroad Scholar – Amity Global Institute, Singapore</p>
+                <p class="text-[#9cabba] text-sm">Completed Business Intelligence Analytics certification as part of study exchange program.</p>
+            </div>
+
+            <div class="bg-[#1b2127] p-4 rounded-xl transition-transform transform hover:scale-105">
+                <img src="alkami1.png" alt="Alkami India Quest" class="w-full h-40 object-contain rounded mb-3">
+                <p class="text-white text-lg font-semibold mb-1">2nd Place – Alkami India Quest</p>
+                <p class="text-[#9cabba] text-sm">Pitched AI & Blockchain-based fintech solution to CEO of Alkami Technologies Pvt Ltd.</p>
+            </div>
+
+            <div class="bg-[#1b2127] p-4 rounded-xl transition-transform transform hover:scale-105">
+                <img src="codechef.png" alt="CodeChef 3 Star" class="w-full h-40 object-contain rounded mb-3">
+                <p class="text-white text-lg font-semibold mb-1">3★ Rated Programmer – CodeChef</p>
+                <p class="text-[#9cabba] text-sm">Achieved 3-star rating by solving 500+ problems and participating in contests.</p>
+            </div>
+
+            <div class="bg-[#1b2127] p-4 rounded-xl transition-transform transform hover:scale-105">
+                <img src="image.png" alt="NIT Kurukshetra Finalist" class="w-full h-40 object-contain rounded mb-3">
+                <p class="text-white text-lg font-semibold mb-1">Case on Point Finalist – NIT Kurukshetra</p>
+                <p class="text-[#9cabba] text-sm">Selected as a finalist for solving real-world case study challenges at national level.</p>
+            </div>
+        </div>
+    </section>
+
+    </div>
+    </div>
+    <section id="contact" class="py-20 px-10 bg-[#0d1117]">
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Contact</h2>
+        <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">Get in touch with me for collaborations or inquiries.</p>
+        <div class="flex justify-center">
+            <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 max-w-[480px] justify-center">
+                <a href="mailto:behlgarv@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#283139] text-white text-sm font-bold leading-normal tracking-[0.015em] grow">
+                <span class="truncate">Email</span>
+            </button>
+                </a>
+                <a href="https://www.linkedin.com/in/garv-behl-2b644a239/" target="_blank" rel="noopener noreferrer">
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#283139] text-white text-sm font-bold leading-normal tracking-[0.015em] grow">
+                <span class="truncate">LinkedIn</span>
+            </button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="flex justify-center mt-10">
+        <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://github.com/garvbehl23" target="_blank" rel="noopener noreferrer">
+                        <div class="text-[#9cabba]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"></path>
+                        </svg>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/garv-behl-2b644a239/" target="_blank" rel="noopener noreferrer">
+                        <div class="text-[#9cabba]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path>
+                        </svg>
+                        </div>
+                    </a>
+                </div>
+                <p class="text-[#9cabba] text-base font-normal leading-normal">© 2024 Garv Behl. All rights reserved.</p>
+            </footer>
+        </div>
+        </div>
+    </footer>
+    </div>
+    </div>
+</body>
+
+</html>
