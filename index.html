@@ -8,36 +8,86 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
+    body {
+        font-family: 'Space Grotesk', sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    .hero-text {
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pulseColor 4s ease infinite;
+    }
+
+    @keyframes pulseColor {
+        0%, 100% {
+            filter: brightness(1.1);
         }
-        
-        .hero-text {
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: pulseColor 4s ease infinite;
+        50% {
+            filter: brightness(1.7);
         }
-        
-        @keyframes pulseColor {
-            0%,
-            100% {
-                filter: brightness(1.1);
-            }
-            50% {
-                filter: brightness(1.7);
-            }
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .skill-icon {
-            color: #3b82f6;
-        }
-    </style>
+    }
+
+    .skill-card,
+    .bg-[#1b2127] {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+    }
+
+    .skill-card:hover,
+    .bg-[#1b2127]:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        background-color: #232a33;
+    }
+
+    a {
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #58a6ff;
+    }
+
+    button {
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #2f3d4d;
+        transform: scale(1.05);
+    }
+
+    footer svg {
+        transition: transform 0.3s ease, fill 0.3s;
+    }
+
+    footer a:hover svg {
+        transform: scale(1.2);
+        fill: #58a6ff;
+    }
+
+    img {
+        transition: transform 0.3s ease;
+    }
+
+    img:hover {
+        transform: scale(1.03);
+    }
+
+    ::selection {
+        background-color: #58a6ff;
+        color: #0d1117;
+    }
+
+    .text-white:hover,
+    h2:hover,
+    h3:hover {
+        color: #58a6ff;
+        transition: color 0.3s ease;
+    }
+</style>
+
 </head>
 
 <body class="bg-[#0d1117] text-white">
