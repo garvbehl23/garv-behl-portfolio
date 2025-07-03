@@ -194,23 +194,6 @@ img.profile-img:hover {
 }
 </style>
 </head>
-<script>
-    const reveals = document.querySelectorAll('.reveal');
-    const scrollHandler = () => {
-        reveals.forEach((el) => {
-            const windowHeight = window.innerHeight;
-            const elementTop = el.getBoundingClientRect().top;
-            const elementVisible = 120;
-
-            if (elementTop < windowHeight - elementVisible) {
-                el.classList.add('active');
-            }
-        });
-    };
-    window.addEventListener("scroll", scrollHandler);
-    window.addEventListener("load", scrollHandler);
-</script>
-
     <body class="bg-[#0d1117] text-white">
     <header class="sticky top-0 bg-[#0d1117] border-b border-[#21262d] px-8 py-4 flex justify-between items-center z-50">
         <h1 class="text-2xl font-bold text-[#58a6ff]">Garv Behl</h1>
