@@ -171,7 +171,55 @@
         text-shadow: var(--neon-glow-secondary);
         transform: scale(1.01); /* Subtle scale on hover */
     }
+    /* Text reveal effect for specific elements */
+.text-reveal-hidden {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-secondary); /* Thin outline for unreadable text */
+    transition: all 0.8s ease-out; /* Smooth transition */
+    opacity: 0;
+    transform: translateY(10px);
+}
 
+.text-reveal-visible {
+    color: var(--text-primary); /* Readable color */
+    -webkit-text-stroke: 0px; /* Remove outline */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Apply to specific elements for text reveal */
+/* For your hero section paragraph */
+.hero-section p {
+    color: var(--text-secondary); /* Default text for non-revealing elements */
+}
+
+/* Example: If you want specific headings or paragraphs to reveal */
+/* You would add .text-reveal-hidden to their class list in HTML */
+/* For instance, if you want your H2s to reveal: */
+h2 {
+    /* Keep existing h2 styles */
+    color: var(--primary-glow); /* Bright section titles */
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    position: relative;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    text-align: center; /* Center align all main section titles */
+
+    /* Initial hidden state */
+    color: transparent;
+    -webkit-text-stroke: 0.5px var(--text-secondary); /* More subtle outline for headings */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-out;
+}
+
+h2.text-reveal-visible {
+    color: var(--primary-glow);
+    -webkit-text-stroke: 0px;
+    opacity: 1;
+    transform: translateY(0);
+}
     /* --- Frosted Card Effect (for Education, Experience, Projects, Achievements) --- */
     .frost-card,
     #education > div > div, /* Target education cards */
@@ -487,6 +535,96 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+    });
+         document.addEventListener('DOMContentLoaded', () => {
+        const cursor = document.createElement('div');
+        cursor.id = 'custom-cursor';
+        document.body.appendChild(cursor);
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - (cursor.offsetWidth / 2)}px, ${e.clientY - (cursor.offsetHeight / 2)}px)`;
+        });
+
+        // Optional: Make cursor slightly larger when hovering over interactive elements
+        document.querySelectorAll('a, button, .frost-card, .skill-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '30px';
+                cursor.style.height = '30px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+            });
+        });
+
+        // --- Scroll reveal for sections (existing logic enhanced) ---
+        const sections = document.querySelectorAll('[data-parallax]');
+        const sectionObserverOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // No unobserve here, as sections might need to be 'visible' multiple times
+                    // or if you want elements to disappear again on scroll up, remove 'unobserve'
+                    // For now, it stays 'visible' once triggered.
+                } else {
+                    // Optional: If you want sections to hide again when scrolled out of view
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, sectionObserverOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // --- New: Text Reveal Effect with Intersection Observer ---
+        // Target elements for text reveal. Adjust selectors as needed.
+        // For example, if you want only the hero paragraph to reveal, use '.hero-section p'
+        // If you want all h2s, use 'h2'
+        const textRevealElements = document.querySelectorAll(
+            '#hero-section p, ' + // Your hero paragraph
+            'h2, ' + // All your section headings
+            '#education h3, #education p, #education ul, ' +
+            '#skills h3, #skills li, ' +
+            '#experiences h3, #experiences li, ' +
+            '#projects h3, #projects p, #projects ul, ' +
+            '#achievements h3, #achievements p, ' +
+            '#contact p' // Contact section paragraph
+            // Add more selectors here for any other text you want to reveal
+        );
+
+        const textRevealObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.7 // Trigger when 70% of text is visible
+        };
+
+        const textRevealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('text-reveal-visible');
+                    entry.target.classList.remove('text-reveal-hidden');
+                    // Stop observing once text is revealed
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, textRevealObserverOptions);
+
+        textRevealElements.forEach(element => {
+            // Add initial hidden class. We'll remove this dynamically on reveal.
+            // Be careful not to apply this to elements that shouldn't animate.
+            // For example, the `h2.hero-text` already has its own animation.
+            if (!element.classList.contains('hero-text')) {
+                element.classList.add('text-reveal-hidden');
+            }
+            textRevealObserver.observe(element);
         });
     });
 </script>
