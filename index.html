@@ -25,7 +25,6 @@
     }
     html {
         scroll-behavior: smooth;
-        cursor: none; 
     }
     body {
         font-family: 'Space Grotesk', sans-serif;
@@ -38,26 +37,7 @@
         padding: 0;
         line-height: 1.6;
     }
-    #custom-cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 20px; 
-        height: 20px;
-        background: var(--primary-glow);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        mix-blend-mode: exclusion; 
-        transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
-        box-shadow: 0 0 15px var(--primary-glow); 
-    }
-    a:hover + #custom-cursor, button:hover + #custom-cursor, .frost-card:hover + #custom-cursor {
-        width: 30px;
-        height: 30px;
-        transform: translate(-50%, -50%) scale(1.2) !important; 
-        box-shadow: 0 0 25px var(--primary-glow), 0 0 40px var(--primary-glow);
-    }
+    
     header {
         background-color: var(--bg-dark); 
         border-bottom: 1px solid var(--border-color);
@@ -415,23 +395,6 @@ h2.text-reveal-visible {
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const cursor = document.createElement('div');
-        cursor.id = 'custom-cursor';
-        document.body.appendChild(cursor);
-        window.addEventListener('mousemove', (e) => {
-            cursor.style.transform = `translate(${e.clientX - (cursor.offsetWidth / 2)}px, ${e.clientY - (cursor.offsetHeight / 2)}px)`;
-        });
-        document.querySelectorAll('a, button, .frost-card, .skill-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.width = '30px';
-                cursor.style.height = '30px';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-            });
-        });
         const sections = document.querySelectorAll('[data-parallax]');
         const observerOptions = {
             root: null, 
