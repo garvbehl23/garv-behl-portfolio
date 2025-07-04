@@ -37,6 +37,32 @@
         padding: 0;
         line-height: 1.6;
     }
+     [data-spotlight] {
+        position: relative;
+    }
+    .spotlight-content {
+        position: relative;
+        z-index: 1;
+    }
+    .spotlight-effect {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.1s ease;
+    }
+    [data-spotlight]:hover .spotlight-effect {
+        opacity: 1;
+    }
+    [data-spotlight] .spotlight-highlight {
+        color: #fff !important;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
     
     header {
         background-color: var(--bg-dark); 
@@ -375,6 +401,69 @@
 </style>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('[data-spotlight]');
+    
+    // Create spotlight element
+    const spotlight = document.createElement('div');
+    spotlight.className = 'spotlight-effect';
+    container.prepend(spotlight);
+    
+    // Process text nodes
+    const textContent = container.querySelector('.spotlight-content');
+    const textElements = textContent.querySelectorAll('h2, p, li, span, a'); // Target all text containers
+    
+    textElements.forEach(el => {
+        const words = el.textContent.split(' ');
+        el.innerHTML = words.map(word => 
+            word ? `<span style="transition: color 0.2s ease;">${word}</span>` : ' '
+        ).join(' ');
+    });
+    
+    // Spotlight logic
+    let lastHighlighted = [];
+    
+    function updateSpotlight(e) {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        spotlight.style.left = `${x}px`;
+        spotlight.style.top = `${y}px`;
+        
+        const toHighlight = [];
+        const allSpans = container.querySelectorAll('span');
+        
+        allSpans.forEach(span => {
+            const spanRect = span.getBoundingClientRect();
+            const distance = Math.sqrt(
+                Math.pow(spanRect.left + spanRect.width/2 - rect.left - x, 2) + 
+                Math.pow(spanRect.top + spanRect.height/2 - rect.top - y, 2)
+            );
+            if (distance < 60) toHighlight.push(span);
+        });
+        
+        // Only update changed elements
+        lastHighlighted.forEach(span => {
+            if (!toHighlight.includes(span)) {
+                span.classList.remove('spotlight-highlight');
+            }
+        });
+        toHighlight.forEach(span => {
+            span.classList.add('spotlight-highlight');
+        });
+        
+        lastHighlighted = toHighlight;
+    }
+    
+    container.addEventListener('mousemove', updateSpotlight);
+    container.addEventListener('mouseenter', () => spotlight.style.opacity = '1');
+    container.addEventListener('mouseleave', () => {
+        spotlight.style.opacity = '0';
+        lastHighlighted.forEach(span => span.classList.remove('spotlight-highlight'));
+        lastHighlighted = [];
+    });
+});
         const sections = document.querySelectorAll('[data-parallax]');
         const observerOptions = {
             root: null, 
@@ -471,15 +560,19 @@
         </nav>
     </header>
     <!-- Hero Section -->
+        
     <section class="py-20 bg-gradient-to-b from-[#161b22] to-[#0d1117] px-4">
         <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-5xl mx-auto">
             <img src="profile.png" alt="Garv Behl" class="w-40 h-40 object-cover border-4 border-[#58a6ff] shadow-md rounded-lg" />
-            <div class="text-center md:text-left">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-white">Hi, I'm Garv Behl</h2>
-                <p class="text-[#8b949e] max-w-2xl text-lg">
-                    An AI/ML Engineer and Full-Stack Developer with a passion for building impactful products powered by machine learning, intelligent automation, and robust web tech.
-                </p>
-            </div>
+            
+           <div class="text-center md:text-left" data-spotlight>
+    <div class="spotlight-content">  <!-- Added wrapper -->
+        <h2 class="text-4xl sm:text-5xl font-black mb-4 text-white">Hi, I'm Garv Behl</h2>
+        <p class="text-[#8b949e] max-w-2xl text-lg">
+            An AI/ML Engineer and Full-Stack Developer with a passion for building impactful products powered by machine learning, intelligent automation, and robust web tech.
+        </p>
+    </div>
+</div>
         </div>
     </section>
     <!-- Education Section -->
